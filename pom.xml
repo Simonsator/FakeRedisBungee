@@ -53,6 +53,7 @@
 		<module>redisbungee-abstraction-layer-limework-bungee-common</module>
 		<module>redisbungee-abstraction-layer-limework-implementation</module>
 		<module>redisbungee-abstraction-layer-limework-modern-implementation</module>
+		<module>redisbungee-abstraction-layer-limework-modern-unified-implementation</module>
 		<module>redisbungee-abstraction-layer-legacy-redisbungee-implementation</module>
 		<module>redisbungee-abstraction-layer-init-bungee</module>
 		<module>redisbungee-abstraction-layer-main-velocity</module>
