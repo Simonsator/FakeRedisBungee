@@ -1,8 +1,8 @@
 package de.simonsator.abstractredisbungee.limework.common.unified;
 
+import com.imaginarycode.minecraft.redisbungee.internal.jedis.UnifiedJedis;
 import de.simonsator.abstractredisbungee.fakejedis.FakeJedis;
 import de.simonsator.abstractredisbungee.fakejedis.FakeJedisPool;
-import redis.clients.jedis.UnifiedJedis;
 
 public class LimeworkFakeUnifiedJedisPool extends FakeJedisPool {
 	private final UnifiedJedis SOURCE;

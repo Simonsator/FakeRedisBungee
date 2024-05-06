@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>redisbungee-abstraction-layer</artifactId>
 		<groupId>de.simonsator</groupId>
-		<version>2.0.3-RELEASE</version>
+		<version>2.0.4-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
@@ -13,9 +13,20 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.github.ProxioDev.redisbungee</groupId>
-			<artifactId>RedisBungee-API</artifactId>
+			<artifactId>RedisBungee-Bungee</artifactId>
 			<version>0.12.1</version>
 			<scope>provided</scope>
+			<classifier>all</classifier>
+			<exclusions>
+				<exclusion>
+					<groupId>com.github.ProxioDev</groupId>
+					<artifactId>RedisBungee-Commands</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>co.aikar</groupId>
+					<artifactId>acf-bungee</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>de.simonsator</groupId>

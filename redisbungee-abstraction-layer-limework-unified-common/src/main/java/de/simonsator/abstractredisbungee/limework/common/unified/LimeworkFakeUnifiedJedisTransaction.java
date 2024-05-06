@@ -1,7 +1,7 @@
 package de.simonsator.abstractredisbungee.limework.common.unified;
 
+import com.imaginarycode.minecraft.redisbungee.internal.jedis.AbstractTransaction;
 import de.simonsator.abstractredisbungee.fakejedis.FakeJedisTransaction;
-import redis.clients.jedis.AbstractTransaction;
 
 public class LimeworkFakeUnifiedJedisTransaction extends FakeJedisTransaction {
 	private final AbstractTransaction SOURCE;
