@@ -16,7 +16,7 @@ public class LimeworkFakeUnifiedJedis extends FakeJedis {
 
 	@Override
 	public void close() {
-		SOURCE.close();
+
 	}
 
 	@Override
