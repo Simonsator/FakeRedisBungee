@@ -25,7 +25,7 @@ public class LimeworkRedisVelocityAPIUnifiedJedis extends LimeworkRedisVelocityA
 	@Override
 	public FakeJedisPool getPool() {
 		if (pool == null) {
-			pool = LimeworkFakeUnifiedJedisPoolVelocityFabric.create(PROXY_SERVER);
+			pool = new LimeworkFakeUnifiedJedisPool();
 		}
 		return pool;
 	}

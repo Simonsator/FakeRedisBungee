@@ -34,7 +34,7 @@ public class ModernLimeworkRedisBungeeAPIUnified extends CommonLimeworkRedisBung
 	@Override
 	public FakeJedisPool getPool() {
 		if (pool == null) {
-			pool = LimeworkFakeUnifiedJedisPoolBungeeFabric.create();
+			pool = new LimeworkFakeUnifiedJedisPool();
 		}
 		return pool;
 	}
