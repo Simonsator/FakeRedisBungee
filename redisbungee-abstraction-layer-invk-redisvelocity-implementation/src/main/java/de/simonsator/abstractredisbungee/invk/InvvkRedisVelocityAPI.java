@@ -4,9 +4,13 @@ import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.api.proxy.server.ServerInfo;
 import de.simonsator.abstractredisbungee.FakeRedisVelocityAPI;
+import de.simonsator.abstractredisbungee.events.PlayerJoinedNetworkManager;
+import de.simonsator.abstractredisbungee.events.PlayerLeftNetworkManager;
 import de.simonsator.abstractredisbungee.events.PubSubMessageManager;
 import de.simonsator.abstractredisbungee.fakejedis.FakeJedisPool;
 import io.github.invvk.redisvelocity.RedisVelocityAPI;
+import io.github.invvk.redisvelocity.events.PlayerJoinedNetworkEvent;
+import io.github.invvk.redisvelocity.events.PlayerLeftNetworkEvent;
 import io.github.invvk.redisvelocity.events.PubSubMessageEvent;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -58,5 +62,15 @@ public class InvvkRedisVelocityAPI extends FakeRedisVelocityAPI {
 	@Subscribe
 	public void onPubSubMessage(PubSubMessageEvent pEvent) {
 		PubSubMessageManager.getInstance().invokePubSubMessageEvent(pEvent.getChannel(), pEvent.getMessage());
+	}
+
+	@Subscribe
+	public void onPlayerJoinNetwork(PlayerJoinedNetworkEvent pEvent) {
+		PlayerJoinedNetworkManager.getInstance().playerJoinedNetwork(pEvent.getUuid());
+	}
+
+	@Subscribe
+	public void onPlayerLeaveNetwork(PlayerLeftNetworkEvent pEvent) {
+		PlayerLeftNetworkManager.getInstance().playerLeftNetwork(pEvent.getUuid());
 	}
 }

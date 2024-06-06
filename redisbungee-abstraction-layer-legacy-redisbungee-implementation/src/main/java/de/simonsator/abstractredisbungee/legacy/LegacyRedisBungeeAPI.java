@@ -2,8 +2,12 @@ package de.simonsator.abstractredisbungee.legacy;
 
 import com.imaginarycode.minecraft.redisbungee.RedisBungee;
 import com.imaginarycode.minecraft.redisbungee.RedisBungeeAPI;
+import com.imaginarycode.minecraft.redisbungee.events.PlayerJoinedNetworkEvent;
+import com.imaginarycode.minecraft.redisbungee.events.PlayerLeftNetworkEvent;
 import com.imaginarycode.minecraft.redisbungee.events.PubSubMessageEvent;
 import de.simonsator.abstractredisbungee.FakeRedisBungeeAPI;
+import de.simonsator.abstractredisbungee.events.PlayerJoinedNetworkManager;
+import de.simonsator.abstractredisbungee.events.PlayerLeftNetworkManager;
 import de.simonsator.abstractredisbungee.events.PubSubMessageManager;
 import de.simonsator.abstractredisbungee.fakejedis.FakeJedisPool;
 import net.md_5.bungee.api.ProxyServer;
@@ -65,5 +69,15 @@ public class LegacyRedisBungeeAPI extends FakeRedisBungeeAPI implements Listener
 	@EventHandler
 	public void onPubSubMessage(PubSubMessageEvent pEvent) {
 		PubSubMessageManager.getInstance().invokePubSubMessageEvent(pEvent.getChannel(), pEvent.getMessage());
+	}
+
+	@EventHandler
+	public void onPlayerJoinNetwork(PlayerJoinedNetworkEvent pEvent) {
+		PlayerJoinedNetworkManager.getInstance().playerJoinedNetwork(pEvent.getUuid());
+	}
+
+	@EventHandler
+	public void onPlayerLeaveNetwork(PlayerLeftNetworkEvent pEvent) {
+		PlayerLeftNetworkManager.getInstance().playerLeftNetwork(pEvent.getUuid());
 	}
 }

@@ -1,11 +1,15 @@
 package de.simonsator.abstractredisbungee.velocity.limework;
 
 import com.imaginarycode.minecraft.redisbungee.RedisBungeeAPI;
+import com.imaginarycode.minecraft.redisbungee.api.events.IPlayerJoinedNetworkEvent;
+import com.imaginarycode.minecraft.redisbungee.api.events.IPlayerLeftNetworkEvent;
 import com.imaginarycode.minecraft.redisbungee.events.PubSubMessageEvent;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.api.proxy.server.ServerInfo;
 import de.simonsator.abstractredisbungee.FakeRedisVelocityAPI;
+import de.simonsator.abstractredisbungee.events.PlayerJoinedNetworkManager;
+import de.simonsator.abstractredisbungee.events.PlayerLeftNetworkManager;
 import de.simonsator.abstractredisbungee.events.PubSubMessageManager;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -43,5 +47,15 @@ public abstract class LimeworkRedisVelocityAbstractAPI extends FakeRedisVelocity
 	@Subscribe
 	public void onPubSubMessage(PubSubMessageEvent pEvent) {
 		PubSubMessageManager.getInstance().invokePubSubMessageEvent(pEvent.getChannel(), pEvent.getMessage());
+	}
+
+	@Subscribe
+	public void onPlayerJoinNetwork(IPlayerJoinedNetworkEvent pEvent) {
+		PlayerJoinedNetworkManager.getInstance().playerJoinedNetwork(pEvent.getUuid());
+	}
+
+	@Subscribe
+	public void onPlayerLeaveNetwork(IPlayerLeftNetworkEvent pEvent) {
+		PlayerLeftNetworkManager.getInstance().playerLeftNetwork(pEvent.getUuid());
 	}
 }
