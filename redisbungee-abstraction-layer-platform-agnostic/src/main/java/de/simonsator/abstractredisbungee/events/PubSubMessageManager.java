@@ -1,11 +1,7 @@
 package de.simonsator.abstractredisbungee.events;
 
-import java.util.LinkedList;
-import java.util.List;
-
-public class PubSubMessageManager {
+public class PubSubMessageManager extends GenericListenerManager<PubSubMessageListener> {
 	private static PubSubMessageManager instance;
-	private final List<PubSubMessageListener> LISTENERS = new LinkedList<>();
 
 	public PubSubMessageManager() {
 		instance = this;
@@ -16,15 +12,14 @@ public class PubSubMessageManager {
 	}
 
 	public void registerPubSubMessageEvent(PubSubMessageListener pReceiver) {
-		LISTENERS.add(pReceiver);
+		registerEventListener(pReceiver);
 	}
 
 	public void unregisterPubSubMessageEvent(PubSubMessageListener pReceiver) {
-		LISTENERS.remove(pReceiver);
+		unregisterEventListener(pReceiver);
 	}
 
 	public void invokePubSubMessageEvent(String pChannel, String message) {
-		for (PubSubMessageListener listener : LISTENERS)
-			listener.onMessageReceived(pChannel, message);
+		LISTENERS.forEach(listener -> listener.onMessageReceived(pChannel, message));
 	}
 }
