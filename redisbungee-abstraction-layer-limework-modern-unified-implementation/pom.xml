@@ -9,7 +9,7 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>redisbungee-abstraction-layer-limework-modern-implementation</artifactId>
+	<artifactId>redisbungee-abstraction-layer-limework-modern-unified-implementation</artifactId>
 
 	<dependencies>
 		<dependency>
@@ -20,10 +20,21 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.github.limework.redisbungee</groupId>
+			<groupId>com.github.ProxioDev.redisbungee</groupId>
 			<artifactId>RedisBungee-Bungee</artifactId>
-			<version>0.8.0</version>
+			<version>0.12.1</version>
 			<scope>provided</scope>
+			<classifier>all</classifier>
+			<exclusions>
+				<exclusion>
+					<groupId>com.github.ProxioDev</groupId>
+					<artifactId>RedisBungee-Commands</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>co.aikar</groupId>
+					<artifactId>acf-bungee</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>de.simonsator</groupId>
@@ -34,6 +45,12 @@
 		<dependency>
 			<groupId>de.simonsator</groupId>
 			<artifactId>redisbungee-abstraction-layer-limework-common</artifactId>
+			<version>${revision}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>de.simonsator</groupId>
+			<artifactId>redisbungee-abstraction-layer-limework-unified-common</artifactId>
 			<version>${revision}</version>
 			<scope>compile</scope>
 		</dependency>
