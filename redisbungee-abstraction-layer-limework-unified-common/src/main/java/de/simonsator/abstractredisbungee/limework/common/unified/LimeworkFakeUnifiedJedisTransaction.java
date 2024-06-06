@@ -28,5 +28,6 @@ public class LimeworkFakeUnifiedJedisTransaction extends FakeJedisTransaction {
 	@Override
 	public void exec() {
 		SOURCE.exec();
+		SOURCE.close();
 	}
 }
